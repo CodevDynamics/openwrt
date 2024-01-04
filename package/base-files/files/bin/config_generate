@@ -162,8 +162,8 @@ generate_network() {
 		static)
 			local ipad
 			case "$1" in
-				lan) ipad=${ipaddr:-"192.168.1.1"} ;;
-				*) ipad=${ipaddr:-"192.168.$((addr_offset++)).1"} ;;
+				lan) ipad=${ipaddr:-"192.168.2.2"} ;;
+				*) ipad=${ipaddr:-"192.168.2.2"} ;;
 			esac
 
 			netm=${netmask:-"255.255.255.0"}
@@ -217,6 +217,11 @@ generate_network() {
 			EOF
 		;;
 	esac
+	uci -q batch <<-EOF
+		set network.usbnet='interface'
+		set network.usbnet.device='eth1'
+		set network.usbnet.proto='dhcp'
+	EOF
 }
 
 generate_switch_vlans_ports() {

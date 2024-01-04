@@ -32,16 +32,16 @@
 
 &state_default {
 	gpio {
-		groups = "uart2";
-		function = "gpio";
+		#groups = "uart2";
+		#function = "gpio";
 	};
 };
 
 &pinctrl {
 	i2s_pins: i2s {
 		i2s {
-			groups = "uart3";
-			function = "i2s";
+			#groups = "uart3";
+			#function = "i2s";
 		};
 	};
 };
@@ -102,7 +102,7 @@
 			partition@50000 {
 				compatible = "denx,uimage";
 				label = "firmware";
-				reg = <0x50000 0x7b0000>;
+				reg = <0x50000 0x1fb0000>;
 			};
 		};
 	};
@@ -169,4 +169,12 @@
 	macaddr_factory_5: macaddr@5 {
 		reg = <0x5 0x6>;
 	};
+};
+
+&uartlite3 {
+	status = "okay";
+};
+
+&uartlite2 {
+	status = "okay";
 };

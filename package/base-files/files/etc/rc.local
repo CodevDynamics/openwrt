@@ -1,4 +1,11 @@
 # Put your custom commands here that should be executed once
 # the system init finished. By default this file does nothing.
 
+uci show luci.main.mediaurlbase | grep argon
+if [ "$?" == "1" ]; then
+       uci set luci.main.mediaurlbase='/luci-static/argon'
+       uci commit luci
+       /etc/init.d/uhttpd restart
+fi
+
 exit 0

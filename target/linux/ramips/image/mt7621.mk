@@ -1476,7 +1476,8 @@ TARGET_DEVICES += linksys_re7000
 
 define Device/mediatek_ap-mt7621a-v60
   $(Device/dsa-migration)
-  IMAGE_SIZE := 7872k
+  $(Device/uimage-lzma-loader)
+  IMAGE_SIZE := 31744k
   DEVICE_VENDOR := Mediatek
   DEVICE_MODEL := AP-MT7621A-V60 EVB
   DEVICE_PACKAGES := kmod-usb3 kmod-sdhci-mt7620 kmod-sound-mt7620 \
